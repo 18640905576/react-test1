@@ -40,3 +40,8 @@
 .robotList {
   background-color: #ccffee;
 }
+
+.appHeader {
+  display: flex;
+  width: 100px;
+}
