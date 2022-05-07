@@ -6,8 +6,14 @@ interface RobotProps {
   email: string;
 }
 
-const Robot: React.FC<RobotProps> = (props) => {
-  return <></>;
+const Robot: React.FC<RobotProps> = ({ id, name, email }) => {
+  return (
+    <li>
+      <img src={`https://robohash.org/${id}`} alt='' />
+      <h2>{name}</h2>
+      <p>{email}</p>
+    </li>
+  );
 };
 
 export default Robot;
