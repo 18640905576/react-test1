@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineShopping } from "react-icons";
+import { AiOutlineShopping } from "react-icons/ai";
 
 interface Props {}
 
@@ -14,6 +14,7 @@ class ShoppingCart extends React.Component<Props, State> {
   }
 
   changeOpenCart = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    //   target 事件发生的元素 currentTarget 事件处理绑定的元素
     console.log(e.target, e.currentTarget);
     this.setState({ isOpen: !this.state.isOpen });
   };
@@ -21,7 +22,10 @@ class ShoppingCart extends React.Component<Props, State> {
   render() {
     return (
       <div>
-        <button onClick={this.changeOpenCart}>购物车2(件)</button>
+        <button onClick={this.changeOpenCart}>
+          <AiOutlineShopping />
+          购物车2(件)
+        </button>
         <div style={{ display: this.state.isOpen ? "block" : "none" }}>
           <ul>
             <li>robot1</li>
