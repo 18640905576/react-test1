@@ -4,6 +4,7 @@ import logo from "./assets/logo.svg";
 import styles from "./App.module.css";
 // import robots from "./mockdata/robots.json";
 import Robot from "./components/Robot";
+import RobotDiscount from "./components/RobotDiscount";
 import ShoppingCart from "./components/ShoppingCart";
 
 interface Props {
@@ -68,9 +69,9 @@ const App: React.FC<Props> = (props: Props) => {
 
       {!loading ? (
         <ul className={styles.robotList}>
-          {robotGallery.map((r) => (
-            <Robot id={r.id} name={r.name} email={r.email} />
-          ))}
+          {robotGallery.map((r, index) => {
+            return index % 2 === 0 ? <RobotDiscount id={r.id} name={r.name} email={r.email} /> : <Robot id={r.id} name={r.name} email={r.email} />;
+          })}
         </ul>
       ) : (
         <h2>loading加载中</h2>

@@ -3,7 +3,7 @@ import styles from "./Robot.module.css";
 import { appContext, appSetStateContext } from "../AppState";
 import withAddToCart from "./AddToCart";
 
-interface RobotProps {
+export interface RobotProps {
   id: string;
   name: string;
   email: string;
@@ -14,7 +14,7 @@ interface RobotProps {
 // // 经过 JSON 转换
 // const userProvideProps = JSON.parse(userProvidePropsString);
 
-const Robot: React.FC<RobotProps> = ({ id, name, email, addToCart }) => {
+const RobotDiscount: React.FC<RobotProps> = ({ id, name, email, addToCart }) => {
   // return <div {...userProvideProps} />;
 
   const value = useContext(appContext);
@@ -22,6 +22,7 @@ const Robot: React.FC<RobotProps> = ({ id, name, email, addToCart }) => {
   return (
     <li className={styles.cardContainer}>
       <img src={`https://robohash.org/${id}`} alt='' />
+      <h2>打折商品</h2>
       <h2>{name}</h2>
       <p>{email}</p>
       <p>作者名称：{value.username}</p>
@@ -36,4 +37,4 @@ const Robot: React.FC<RobotProps> = ({ id, name, email, addToCart }) => {
   );
 };
 
-export default withAddToCart(Robot);
+export default withAddToCart(RobotDiscount);
