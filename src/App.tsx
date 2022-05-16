@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-// import "./App.css";
+import "./App.css";
 import logo from "./assets/logo.svg";
 import styles from "./App.module.css";
 // import robots from "./mockdata/robots.json";
 import Robot from "./components/Robot";
 import RobotDiscount from "./components/RobotDiscount";
 import ShoppingCart from "./components/ShoppingCart";
+import MyDialog from "./components/Dialog";
 
 interface Props {
   // username: string;
@@ -22,10 +23,6 @@ const App: React.FC<Props> = (props: Props) => {
 
   useEffect(() => {
     document.title = `I have click ${count} 次`;
-    return () => {
-      console.log(88888);
-      // TODO 销毁的时候调用
-    };
   }, [count]);
 
   const [loading, setLoading] = useState(false);
@@ -50,7 +47,13 @@ const App: React.FC<Props> = (props: Props) => {
       }
     };
     fetchData();
+    return () => {
+      console.log(88888);
+      // 需要在 componentWillUnmount 执行的内容
+    };
   }, []);
+
+  const [showDialog, setShowDialog] = useState(true);
 
   return (
     <div>
@@ -66,6 +69,27 @@ const App: React.FC<Props> = (props: Props) => {
         Click this to add count
       </button>
       <span>{count}</span>
+
+      {/* dialog弹窗 */}
+      <div>
+        <button
+          onClick={() => {
+            setShowDialog(!showDialog);
+          }}
+        >
+          Click this to show dialog
+        </button>
+      </div>
+      <MyDialog
+        show={showDialog}
+        customClass='appDialog'
+        delay={2000}
+        onClose={() => {
+          setShowDialog(false);
+        }}
+      >
+        我是dialog内容
+      </MyDialog>
 
       {!loading ? (
         <ul className={styles.robotList}>
