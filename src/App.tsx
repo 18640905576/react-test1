@@ -1,16 +1,10 @@
 import React from "react";
-import { Router, Route } from "react-router";
+import { Routes, Route, Link } from "react-router-dom";
 // @ts-ignore
-import { HomePage } from "./pages";
+import HomePage from "./pages/home/HomePage";
 
-const App: React.FC = () => {
-  return (
-    <div>
-      <Router location={""} navigator={undefined}>
-        <Route path='/' component={HomePage}></Route>
-      </Router>
-    </div>
-  );
-};
+function App() {
+  return <div>6666</div>;
+}
 
 export default App;
