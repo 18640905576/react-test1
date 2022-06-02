@@ -52,7 +52,7 @@ const HomePage: React.FC<Props> = (props: Props) => {
     };
   }, []);
 
-  const [showDialog, setShowDialog] = useState(true);
+  const [showDialog, setShowDialog] = useState(false);
 
   return (
     <div>
@@ -90,7 +90,7 @@ const HomePage: React.FC<Props> = (props: Props) => {
         我是dialog内容
       </MyDialog>
 
-      {!loading ? (
+      {/* {!loading ? (
         <ul className={styles.robotList}>
           {robotGallery.map((r, index) => {
             return index % 2 === 0 ? <RobotDiscount id={r.id} name={r.name} email={r.email} /> : <Robot id={r.id} name={r.name} email={r.email} />;
@@ -98,7 +98,12 @@ const HomePage: React.FC<Props> = (props: Props) => {
         </ul>
       ) : (
         <h2>loading加载中</h2>
-      )}
+      )} */}
+      <ul className={styles.robotList}>
+        {robotGallery.map((r, index) => {
+          return index % 2 === 0 ? <RobotDiscount id={r.id} name={r.name} email={r.email} /> : <Robot id={r.id} name={r.name} email={r.email} />;
+        })}
+      </ul>
     </div>
   );
 };
